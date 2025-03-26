@@ -17,3 +17,17 @@ function solve() {
       }
   }
 }
+// another solution
+function solve() {
+  let text = document.getElementById('input').value;
+  let sentences = text.split('.').filter(s => s.trim() !== '');
+  let result = [];
+
+  for (let i = 0; i < sentences.length; i += 3) {
+    let pSentences = sentences.slice(i, i + 3).map(s => s.trim() + '.').join(' ');
+    let p = `<p>${pSentences}</p>`;
+    result.push(p);
+  }
+
+  document.getElementById('output').innerHTML = result.join('\n');
+}
