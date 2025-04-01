@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', solve);
 
 function solve() {
+
   let [generateBtn, buyBtn] = Array.from(document.querySelectorAll('[type="submit"]'));
   generateBtn.addEventListener('click', onGenerate);
   buyBtn.addEventListener('click', onBuy);
@@ -14,15 +15,11 @@ function solve() {
   
     data.map(createRow).forEach(c => table.appendChild(c));
 
-    for (let entry of data) {
-      let row = createRow(entry);
-      table.appendChild(row);
-    }
-
   }
 
   function onBuy(ev) {
     ev.preventDefault();
+
     let selected = [];
     let total = 0;
     let decFactor = 0;
@@ -39,7 +36,7 @@ function solve() {
     let result = [
       `Bought furniture: ${selected.join(', ')}`,
       `Total price: ${total}`,
-      `Average decoration factor: ${decFactor/selected.length}`
+      `Average decoration factor: ${decFactor / selected.length}`
     ];
 
     document.querySelector('#shop textarea').value = result.join('\n');
@@ -67,9 +64,10 @@ function solve() {
     return row;
   }
 
+
   function createCol(content) {
    let col = document.createElement('td');
-   let p = dpcument.createElement('p');
+   let p = document.createElement('p');
    p.textContent = content;
    col.appendChild(p);
    
